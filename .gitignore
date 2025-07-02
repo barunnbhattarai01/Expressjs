@@ -1,0 +1,26 @@
+# Node modules
+node_modules/
+
+# Output folders
+dist/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Optional npm cache folder
+.npm
+
+# IDE files
+.vscode/
+.idea/
+
+# Mac system files
+.DS_Store
