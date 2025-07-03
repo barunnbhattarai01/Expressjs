@@ -24,29 +24,14 @@ app.use(express.urlencoded({ extended: true }));
 
 // })
 
-// app.get("/",(req:Request,res:Response,next:NextFunction)=>{
-//    res.send(`
-//     <h1>Welcome register</h1>
-//     <form action="/add"  method="POST">
-//       <input type="text" name="username" />
-//       <input type="submit">
-//        </form>`
-//     )
-  
 
-// })
 app.use(router);
 app.use(hostrouter)
 
-// app.post("/add",(req:Request,res:Response,next:NextFunction)=>{
-//     res.send(`Go back too main page ${req.body.username}
-//        <a href="/">MAin page</a>
-//        `
-//     )
-  
 
-// })
-
+app.use((req:Request,res:Response ,next:NextFunction)=>{
+    res.status(404).send("<h1>404 Page not found</h1>")
+})
 
 
 

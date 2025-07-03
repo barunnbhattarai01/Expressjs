@@ -2,6 +2,7 @@ import { Request,Response } from "express-serve-static-core";
 import { NextFunction } from "express-serve-static-core";
 
 const express =require('express');
+const path=require('path')
 
 const router=express.Router()
 
@@ -13,15 +14,7 @@ router.use("/",(req:Request,res:Response,next:NextFunction)=>{
 })
 
 router.get("/",(req:Request,res:Response,next:NextFunction)=>{
-   res.send(`
-    <h1>Welcome register</h1>
-    <form action="/add"  method="POST">
-      <input type="text" name="username" />
-      <input type="submit">
-       </form>`
-    )
-  
-
+   res.sendFile(path.join(__dirname,"../","views","home.html"))
 })
 
 module.exports=router
