@@ -4,6 +4,7 @@ import { NextFunction } from "express-serve-static-core";
 
 //core modules
 const http =require('http');
+const path=require('path')
 
 //External module
 const express =require('express');
@@ -11,7 +12,8 @@ const app=express();
 
 //local module
 const router=require('./routing/routing')
-const hostrouter=require('./routing/hostrouter')
+const {hostrouter}=require('./routing/hostrouter')
+const rootdirectory=require('./utils/utils')
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -28,9 +30,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(router);
 app.use(hostrouter)
 
+//middleware for css
+app.use(express.static(path.join(rootdirectory,'public')))
+
 
 app.use((req:Request,res:Response ,next:NextFunction)=>{
-    res.status(404).send("<h1>404 Page not found</h1>")
+    res.status(404).sendFile(path.join(rootdirectory,'views','404.html'))
 })
 
 

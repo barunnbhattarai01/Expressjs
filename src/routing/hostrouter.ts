@@ -4,15 +4,17 @@ import { NextFunction } from "express-serve-static-core";
 const express=require('express')
 const path=require('path');
 const hostrouter =express.Router();
+const rootdir=require('../utils/utils')
 
 
-
+const regiterdhome:(string | object)[]=[];
 hostrouter.post("/add",(req:Request,res:Response,next:NextFunction)=>{
-    
-    res.sendFile(path.join(__dirname,"../","views","add.html"))
+    regiterdhome.push('Sucessfully registered",req.body')
+    res.sendFile(path.join(rootdir,"views","add.html"))
    
   
 
 })
 
-module.exports=hostrouter;
+exports.hostrouter=hostrouter;
+exports.regiterdhome=regiterdhome;
