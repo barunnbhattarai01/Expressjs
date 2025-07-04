@@ -9,11 +9,14 @@ const path=require('path')
 //External module
 const express =require('express');
 const app=express();
+const dotenv=require("dotenv").config();
+
 
 //local module
 const router=require('./routing/routing')
 const {hostrouter}=require('./routing/hostrouter')
 const rootdirectory=require('./utils/utils')
+const login =require('./routing/login')
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -29,6 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(router);
 app.use(hostrouter)
+app.post('/login',login)
 
 //middleware for css
 app.use(express.static(path.join(rootdirectory,'public')))

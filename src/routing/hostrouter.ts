@@ -9,7 +9,10 @@ const rootdir=require('../utils/utils')
 
 const regiterdhome:(string | object)[]=[];
 hostrouter.post("/add",(req:Request,res:Response,next:NextFunction)=>{
-    regiterdhome.push('Sucessfully registered",req.body')
+    regiterdhome.push({
+    message: "Successfully registered",
+    data: req.body,
+  })
     res.sendFile(path.join(rootdir,"views","add.html"))
    
   

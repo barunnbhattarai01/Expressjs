@@ -13,10 +13,24 @@
     <main>
         
        <h1>Welcome register</h1>
-    <form action="/add"  method="POST">
-      <input type="text" name="username" />
-      <input type="submit">
-       </form>
+    <!-- public/login.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+  </head>
+  <body>
+    <h2>Login</h2>
+    <form action="/add" method="POST">
+      <input type="text" name="username" placeholder="Enter Username" required />
+      <br /><br />
+      <input type="password" name="password" placeholder="Enter Password" required />
+      <br /><br />
+      <input type="submit" value="Login" />
+    </form>
+  </body>
+</html>
+
 
         </main>
 
