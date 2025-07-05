@@ -13,8 +13,8 @@ interface LoginForm{
 }
 
 module.exports =async (req:Request<{},{},LoginForm> ,res:Response):Promise<void> =>{
-    const{username,password}=req.body;
- const user =await getuser(username)
+    const{username,password}=req.body; //we take the username and password from body
+ const user =await getuser(username)   //asynchrous process 
  if(user.password!=password){
      res.status(403).json({
         error:"invalid login"
@@ -27,7 +27,7 @@ module.exports =async (req:Request<{},{},LoginForm> ,res:Response):Promise<void>
 const token =jwt.sign(user,process.env.My_Secret,{expiresIn:"1h"});
 
 res.cookie("token",token,{
-    httpOnly:true,
+    httpOnly:true,     //it allowesd to not to view using javascript(like document.cookie ) which prevent css
 
 })
 return res.redirect("/add");

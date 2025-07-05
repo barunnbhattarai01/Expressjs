@@ -1,5 +1,8 @@
 import { Request,Response } from "express-serve-static-core";
 import { NextFunction } from "express-serve-static-core";
+import { cookieJwtAuth } from "./middleware/cookies";
+import cookieParser from "cookie-parser";
+
 
 
 //core modules
@@ -29,6 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // })
 
+app.use(cookieParser()) //cookie parse should be before any route or middleware espcially looogin
 
 app.use(router);
 app.use(hostrouter)

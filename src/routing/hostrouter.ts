@@ -1,5 +1,7 @@
 import { Request,Response } from "express-serve-static-core";
 import { NextFunction } from "express-serve-static-core";
+import { cookieJwtAuth } from "../middleware/cookies";
+
 
 const express=require('express')
 const path=require('path');
@@ -8,7 +10,7 @@ const rootdir=require('../utils/utils')
 
 
 const regiterdhome:(string | object)[]=[];
-hostrouter.post("/add",(req:Request,res:Response,next:NextFunction)=>{
+hostrouter.get("/add",cookieJwtAuth,(req:Request,res:Response,next:NextFunction)=>{
     regiterdhome.push({
     message: "Successfully registered",
     data: req.body,
@@ -18,6 +20,4 @@ hostrouter.post("/add",(req:Request,res:Response,next:NextFunction)=>{
   
 
 })
-
-exports.hostrouter=hostrouter;
-exports.regiterdhome=regiterdhome;
+export { hostrouter, regiterdhome };
